@@ -1,16 +1,16 @@
 package chess.oracle;
 
 public class Nodo {
+
     Nodo next;
-    Nodo Pila;
     Object data;
 
     public Nodo() {
     }
-    
-    public Nodo(Nodo next, Nodo Pila, Object data) {
+
+    public Nodo(Nodo next, Object data) {
         this.next = next;
-        this.Pila = Pila;
+
         this.data = data;
     }
 
@@ -22,14 +22,6 @@ public class Nodo {
         this.next = next;
     }
 
-    public Nodo getPila() {
-        return Pila;
-    }
-
-    public void setPila(Nodo Pila) {
-        this.Pila = Pila;
-    }
-
     public Object getData() {
         return data;
     }
@@ -38,5 +30,4 @@ public class Nodo {
         this.data = data;
     }
 
-    
 }
