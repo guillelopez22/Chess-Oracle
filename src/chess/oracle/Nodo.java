@@ -1,17 +1,24 @@
 package chess.oracle;
 
 public class Nodo {
-
+    TreeNode treenode = null;
     Nodo next;
-    Object data;
 
-    public Nodo() {
+    public Nodo(TreeNode treenode){
+        this.treenode=treenode;
+    }
+    
+    public Nodo(){
+        
+    }
+            
+
+    public TreeNode getValue() {
+        return treenode;
     }
 
-    public Nodo(Nodo next, Object data) {
-        this.next = next;
-
-        this.data = data;
+    public void setValue(TreeNode treenode) {
+        this.treenode = treenode;
     }
 
     public Nodo getNext() {
@@ -21,13 +28,4 @@ public class Nodo {
     public void setNext(Nodo next) {
         this.next = next;
     }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-
 }

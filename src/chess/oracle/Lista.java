@@ -3,105 +3,87 @@ package chess.oracle;
 public class Lista {
 
     Nodo head;
-
-    //opcional un zise;
-    public Lista(Nodo head) {
-        this.head = head;
-
-    }
+    int size = 0;
 
     public Lista() {
+        head = new Nodo();
     }
 
-    public void setHead(Nodo uncomingnode) {
-        if (this.head == null) {
-            this.head = uncomingnode;
-        } else {
-            uncomingnode.setNext(head);
-            this.head = uncomingnode;
+    public void insert(TreeNode treenode, int pos) {
+        Nodo newNodo = new Nodo(treenode);
+        Nodo newHead = head;
+        int cont = 0;
+        if (pos == 0) {
+            newNodo.setNext(head);
+            this.setHead(newNodo);
         }
-    }
-
-    public Nodo getHead() {
-        return this.head;
-    }
-
-    public void insert(int position, Nodo value) {
-        if (position == 0) {
-            value.setNext(head);
-
-            head = value;
-        } else {
-            Nodo headtemp = head;
-            int contador = 0;
-            while (headtemp.getNext() != null) {
-
-                contador++;
-                if (contador == position) {
-                    value.setNext(headtemp.getNext());
-                    headtemp.setNext(value);
-                    break;
-                }
-                headtemp = headtemp.getNext();
-            }
-
-        }
-    }
-
-    public Object at(int position) {
-        Nodo temporal = this.head;
-        boolean bandera = false;
-        int contador = -1;
-        Object returnvalue = -1;
-        while (temporal != null) {
-            contador++;
-            if (contador == position) {
-                returnvalue = temporal.getData();
-                bandera = true;
+        while (newHead.getNext() != null) {
+            newHead = newHead.getNext();
+            cont++;
+            if (cont == pos) {
                 break;
             }
-            temporal = temporal.getNext();
         }
-
-        if (bandera == false) {
-            returnvalue = -1;
-        }
-
-        return returnvalue;
+        Nodo n = newHead.getNext();
+        newHead.setNext(newNodo);
+        newNodo.setNext(n);
     }
 
-    public void delete(int indice) {
-        if (indice == 0) {
-            head = head.getNext();
-        } else {
-            Nodo temp = head;
-            int contador = -1;
-            while (temp != null) {
-                contador++;
-                if (contador == indice) {
-                    Nodo temporal = temp.getNext();
-                    temporal.setNext(temp.getNext());
-                    temp.setNext(temporal.getNext());
-
-                }
-                temp = temp.getNext();
-
-            }
-        }
-
+    public void setHead(Nodo head) {
+        this.head = head;
     }
 
-    public void concat(Lista uncominglist) {
-        Nodo temporal = this.getHead();
-        if (temporal != null) {
-            while (temporal.getNext() != null) {
-                temporal = temporal.getNext();
-            }
-            temporal.setNext(uncominglist.getHead());
-        } else {
-            this.head = uncominglist.getHead();
-        }
+    public int find(int num) {
+        return 0;
+    }
 
+    public TreeNode get(int pos) {
+        Nodo temp = head;
+        TreeNode valor = temp.getValue();
+        for (int i = 0; i < pos; i++) {
+            temp = temp.getNext();
+            valor = temp.getValue();
+        }
+        return valor;
+    }
+
+    public void delete(int pos) {
+        Nodo temp = head;
+        for (int i = 1; i < pos - 1; i++) {
+            temp = temp.getNext();
+        }
+        Nodo temp2 = temp.getNext();
+        temp.setNext(temp2.getNext());
+    }
+
+    public Object first() {
+        return head.getValue();
+    }
+
+    public void Print_Lista() {
+        Nodo temp = head;
+        int cont = 0;
+        while (temp != null) {
+            if (cont == 0) {
+                System.out.print("[H]");
+            }
+            if (temp.getNext() != null) {
+                System.out.print("[" + temp.getValue() + "] - ");
+                cont++;
+            } else {
+                System.out.print("[" + temp.getValue() + "]");
+                cont++;
+            }
+            temp = temp.next;
+        }
+        System.out.println("");
+    }
+
+    public void setSize(int cont) {
+         size = cont;
+    }
+    public int size(){
+        return size; 
     }
 
 }
