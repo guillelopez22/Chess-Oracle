@@ -24,6 +24,7 @@ public class Tablero extends javax.swing.JFrame {
      */
     public Tablero() {
         initComponents();
+        limpiarmatriz(matriz);
     }
 
     /**
@@ -125,6 +126,7 @@ public class Tablero extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         ColocarPeonBlanco.setText("Colocar Peon Blanco");
         ColocarPeonBlanco.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1052,6 +1054,13 @@ public class Tablero extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jButton1.setText("Ver matris en consola");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1063,17 +1072,24 @@ public class Tablero extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(jButton1)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1083,6 +1099,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A1;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 0;
             mostrarmenu(A1.getX(), A1.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A1MouseClicked
@@ -1090,6 +1108,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A2;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 1;
             mostrarmenu(A2.getX(), A2.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A2MouseClicked
@@ -1097,6 +1117,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A3;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 2;
             mostrarmenu(A3.getX(), A3.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A3MouseClicked
@@ -1104,6 +1126,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A4;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 3;
             mostrarmenu(A4.getX(), A4.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A4MouseClicked
@@ -1111,6 +1135,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A5;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 4;
             mostrarmenu(A5.getX(), A5.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A5MouseClicked
@@ -1118,6 +1144,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A6;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 5;
             mostrarmenu(A6.getX(), A6.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A6MouseClicked
@@ -1125,6 +1153,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A7;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 6;
             mostrarmenu(A7.getX(), A7.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A7MouseClicked
@@ -1132,6 +1162,8 @@ public class Tablero extends javax.swing.JFrame {
     private void A8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.A8;
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 7;
             mostrarmenu(A8.getX(), A8.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_A8MouseClicked
@@ -1139,6 +1171,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B1;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 0;
             mostrarmenu(B1.getX(), B1.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B1MouseClicked
@@ -1146,6 +1180,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B2;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 1;
             mostrarmenu(B2.getX(), B2.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B2MouseClicked
@@ -1153,6 +1189,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B3;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 2;
             mostrarmenu(B3.getX(), B3.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B3MouseClicked
@@ -1160,6 +1198,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B4;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 3;
             mostrarmenu(B4.getX(), B4.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B4MouseClicked
@@ -1167,6 +1207,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B5;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 4;
             mostrarmenu(B5.getX(), B5.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B5MouseClicked
@@ -1174,6 +1216,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B6;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 5;
             mostrarmenu(B6.getX(), B6.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B6MouseClicked
@@ -1181,6 +1225,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B7;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 6;
             mostrarmenu(B7.getX(), B7.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B7MouseClicked
@@ -1188,6 +1234,8 @@ public class Tablero extends javax.swing.JFrame {
     private void B8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.B8;
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 7;
             mostrarmenu(B8.getX(), B8.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_B8MouseClicked
@@ -1195,6 +1243,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C1;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 0;
             mostrarmenu(C1.getX(), C1.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_C1MouseClicked
@@ -1202,6 +1252,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C2;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 1;
             mostrarmenu(C2.getX(), C2.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_C2MouseClicked
@@ -1209,6 +1261,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C3;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 2;
             mostrarmenu(C3.getX(), C3.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_C3MouseClicked
@@ -1216,6 +1270,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C4;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 3;
             mostrarmenu(C4.getX(), C4.getY(), this.jPanel1);
         }
 
@@ -1224,6 +1280,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C5;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 4;
             mostrarmenu(C5.getX(), C5.getY(), this.jPanel1);
         }
 
@@ -1232,6 +1290,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C6;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 5;
             mostrarmenu(C6.getX(), C6.getY(), this.jPanel1);
         }
 
@@ -1240,6 +1300,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C7;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 6;
             mostrarmenu(C7.getX(), C7.getY(), this.jPanel1);
         }
 
@@ -1248,6 +1310,8 @@ public class Tablero extends javax.swing.JFrame {
     private void C8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.C8;
+            this.coordX = this.getnumericcoordenade('C');
+            this.coordY = 7;
             mostrarmenu(C8.getX(), C8.getY(), this.jPanel1);
         }
 
@@ -1256,6 +1320,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D1;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 0;
             mostrarmenu(D1.getX(), D1.getY(), this.jPanel1);
         }
 
@@ -1264,6 +1330,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D2;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 1;
             mostrarmenu(D2.getX(), D2.getY(), this.jPanel1);
         }
 
@@ -1272,6 +1340,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D3;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 2;
             mostrarmenu(D3.getX(), D3.getY(), this.jPanel1);
         }
 
@@ -1280,6 +1350,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D4;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 3;
             mostrarmenu(D4.getX(), D4.getY(), this.jPanel1);
         }
 
@@ -1289,6 +1361,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D5;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 4;
             mostrarmenu(D5.getX(), D5.getY(), this.jPanel1);
         }
 
@@ -1297,6 +1371,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D6;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 5;
             mostrarmenu(D6.getX(), D6.getY(), this.jPanel1);
         }
 
@@ -1305,6 +1381,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D7;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 6;
             mostrarmenu(D7.getX(), D7.getY(), this.jPanel1);
         }
 
@@ -1313,6 +1391,8 @@ public class Tablero extends javax.swing.JFrame {
     private void D8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.D8;
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 7;
             mostrarmenu(D8.getX(), D8.getY(), this.jPanel1);
         }
 
@@ -1321,6 +1401,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E1;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 0;
             mostrarmenu(E1.getX(), E1.getY(), this.jPanel1);
         }
 
@@ -1329,6 +1411,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E2;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 1;
             mostrarmenu(E2.getX(), E2.getY(), this.jPanel1);
         }
 
@@ -1337,6 +1421,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E3;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 2;
             mostrarmenu(E3.getX(), E3.getY(), this.jPanel1);
         }
 
@@ -1345,6 +1431,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E4;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 3;
             mostrarmenu(E4.getX(), E4.getY(), this.jPanel1);
         }
 
@@ -1353,6 +1441,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E5;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 4;
             mostrarmenu(E5.getX(), E5.getY(), this.jPanel1);
         }
 
@@ -1361,6 +1451,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E6;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 5;
             mostrarmenu(E6.getX(), E6.getY(), this.jPanel1);
         }
 
@@ -1369,6 +1461,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E7;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 6;
             mostrarmenu(E7.getX(), E7.getY(), this.jPanel1);
         }
 
@@ -1377,6 +1471,8 @@ public class Tablero extends javax.swing.JFrame {
     private void E8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_E8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.E8;
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 7;
             mostrarmenu(E8.getX(), E8.getY(), this.jPanel1);
         }
 
@@ -1385,6 +1481,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F1;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 0;
             mostrarmenu(F1.getX(), F1.getY(), this.jPanel1);
         }
 
@@ -1393,6 +1491,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F2;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 1;
             mostrarmenu(F2.getX(), F2.getY(), this.jPanel1);
         }
 
@@ -1401,6 +1501,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F3;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 2;
             mostrarmenu(F3.getX(), F3.getY(), this.jPanel1);
         }
 
@@ -1409,6 +1511,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F4;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 3;
             mostrarmenu(F4.getX(), F4.getY(), this.jPanel1);
         }
 
@@ -1417,6 +1521,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F5;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 4;
             mostrarmenu(F5.getX(), F5.getY(), this.jPanel1);
         }
 
@@ -1425,6 +1531,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F6;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 5;
             mostrarmenu(F6.getX(), F6.getY(), this.jPanel1);
         }
 
@@ -1433,6 +1541,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F7;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 6;
             mostrarmenu(F7.getX(), F7.getY(), this.jPanel1);
         }
 
@@ -1441,6 +1551,8 @@ public class Tablero extends javax.swing.JFrame {
     private void F8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_F8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.F8;
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 7;
             mostrarmenu(F8.getX(), F8.getY(), this.jPanel1);
         }
 
@@ -1449,6 +1561,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G1;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 0;
             mostrarmenu(G1.getX(), G1.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G1MouseClicked
@@ -1456,6 +1570,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G2;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 1;
             mostrarmenu(G2.getX(), G2.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G2MouseClicked
@@ -1463,6 +1579,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G3;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 2;
             mostrarmenu(G3.getX(), G3.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G3MouseClicked
@@ -1470,6 +1588,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G4;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 3;
             mostrarmenu(G4.getX(), G4.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G4MouseClicked
@@ -1477,6 +1597,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G5;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 4;
             mostrarmenu(G5.getX(), G5.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G5MouseClicked
@@ -1484,6 +1606,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G6;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 5;
             mostrarmenu(G6.getX(), G6.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G6MouseClicked
@@ -1491,6 +1615,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G7;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 6;
             mostrarmenu(G7.getX(), G7.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G7MouseClicked
@@ -1498,6 +1624,8 @@ public class Tablero extends javax.swing.JFrame {
     private void G8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_G8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.G8;
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 7;
             mostrarmenu(G8.getX(), G8.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_G8MouseClicked
@@ -1505,6 +1633,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H1MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H1;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 0;
             mostrarmenu(H1.getX(), H1.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H1MouseClicked
@@ -1512,6 +1642,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H2MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H2;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 1;
             mostrarmenu(H2.getX(), H2.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H2MouseClicked
@@ -1519,6 +1651,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H3MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H3;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 2;
             mostrarmenu(H3.getX(), H3.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H3MouseClicked
@@ -1526,6 +1660,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H4MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H4;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 3;
             mostrarmenu(H4.getX(), H4.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H4MouseClicked
@@ -1533,6 +1669,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H5MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H5;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 4;
             mostrarmenu(H5.getX(), H5.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H5MouseClicked
@@ -1540,6 +1678,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H6MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H6;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 5;
             mostrarmenu(H6.getX(), H6.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H6MouseClicked
@@ -1547,6 +1687,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H7MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H7;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 6;
             mostrarmenu(H7.getX(), H7.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H7MouseClicked
@@ -1554,6 +1696,8 @@ public class Tablero extends javax.swing.JFrame {
     private void H8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_H8MouseClicked
         if (evt.isMetaDown()) {
             actual = this.H8;
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 7;
             mostrarmenu(H8.getX(), H8.getY(), this.jPanel1);
         }
     }//GEN-LAST:event_H8MouseClicked
@@ -1569,6 +1713,7 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("peon Blanco.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "PB";
                 this.contadorpeonblanco++;
             } catch (IOException ex) {
             }
@@ -1583,6 +1728,7 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("rey Blanco.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "RB";
                 this.contadorreyblanco++;
             } catch (IOException ex) {
             }
@@ -1596,6 +1742,7 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("caballo blanco.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "CB";
                 this.contadorcaballoblanco++;
             } catch (IOException ex) {
             }
@@ -1609,6 +1756,7 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("peon Negro.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "PN";
                 this.contadorpeonnegro++;
             } catch (IOException ex) {
             }
@@ -1622,6 +1770,7 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("rey negro.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "RN";
                 this.contadorreynegro++;
             } catch (IOException ex) {
             }
@@ -1635,14 +1784,54 @@ public class Tablero extends javax.swing.JFrame {
             try {
                 Image img = ImageIO.read(getClass().getResource("caballonegro.png"));
                 actual.setIcon(new ImageIcon(img));
+                matriz[coordX][coordY] = "CN";
                 this.contadorcaballonegro++;
             } catch (IOException ex) {
             }
         }
     }//GEN-LAST:event_ColocarCaballoNegroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print("[" + matriz[i][j] + "]");
+            }
+            System.out.println("");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void mostrarmenu(int x, int y, javax.swing.JPanel coming) {
         this.PopMenuLugar.show(coming, x, y);
 
+    }
+
+    private int getnumericcoordenade(char leter) {
+        int value = -1;
+        if (leter == 'A' || leter == 'a') {
+            value = 0;
+        } else if (leter == 'B' || leter == 'b') {
+            value = 1;
+        } else if (leter == 'C' || leter == 'c') {
+            value = 2;
+        } else if (leter == 'D' || leter == 'd') {
+            value = 3;
+        } else if (leter == 'E' || leter == 'e') {
+            value = 4;
+        } else if (leter == 'F' || leter == 'f') {
+            value = 5;
+        } else if (leter == 'G' || leter == 'g') {
+            value = 6;
+        } else if (leter == 'H' || leter == 'h') {
+            value = 7;
+        }
+        return value;
+    }
+
+    private void limpiarmatriz(String matriz[][]) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                matriz[i][j] = "  ";
+            }
+        }
     }
 
     /**
@@ -1752,6 +1941,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JButton H7;
     private javax.swing.JButton H8;
     private javax.swing.JPopupMenu PopMenuLugar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1773,5 +1963,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JButton actual = new javax.swing.JButton();
-    int contadorcaballonegro = 0, contadorcaballoblanco = 0, contadorreyblanco = 0, contadorreynegro = 0, contadorpeonnegro = 0, contadorpeonblanco = 0;
+    String matriz[][] = new String[8][8];
+    int contadorcaballonegro = 0, contadorcaballoblanco = 0, contadorreyblanco = 0, contadorreynegro = 0,
+            contadorpeonnegro = 0, contadorpeonblanco = 0, coordX = -1, coordY = -1;
 }
