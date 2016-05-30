@@ -1,7 +1,5 @@
 package chess.oracle;
 
-import java.awt.List;
-
 public class TreeNode {
     private Lista children = new Lista();
     private TreeNode padre = null;
