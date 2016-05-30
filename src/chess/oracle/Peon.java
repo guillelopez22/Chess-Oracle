@@ -12,6 +12,9 @@ package chess.oracle;
 public class Peon {
     private int pos_ver;
     private int pos_hor;
+
+    public Peon() {
+    }
     
     public void movement(int type){
         if (type == 1) {

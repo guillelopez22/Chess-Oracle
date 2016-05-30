@@ -12,6 +12,9 @@ package chess.oracle;
 public class Caballo {
     private int pos_vert;
     private int pos_hor;
+
+    public Caballo() {
+    }
     
     public void movemet(int type){
         if (type == 1) {

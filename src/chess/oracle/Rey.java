@@ -12,6 +12,9 @@ package chess.oracle;
 public class Rey {
     private int pos_vert;
     private int pos_hor;
+
+    public Rey() {
+    }
     
     public void movement(int type){
         if (type == 1) {
