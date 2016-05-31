@@ -12,7 +12,15 @@ package chess.oracle;
 public class Rey {
     private int pos_vert;
     private int pos_hor;
+    private String nombre;
 
+    public Rey(int pos_vert, int pos_hor, String nombre) {
+        this.pos_vert = pos_vert;
+        this.pos_hor = pos_hor;
+        this.nombre = nombre;
+    }
+    
+    
     public Rey() {
     }
     
@@ -39,4 +47,12 @@ public class Rey {
             pos_hor = pos_hor +1;
         }
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
+    
 }
