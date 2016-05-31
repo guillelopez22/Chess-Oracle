@@ -5,12 +5,22 @@ public class Peon {
     private int pos_ver;
     private int pos_hor;
     private String nombre;
+    private String estado;
 
     public Peon(int pos_ver, int pos_hor, String nombre) {
         this.pos_ver = pos_ver;
         this.pos_hor = pos_hor;
         this.nombre = nombre;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
 
     public Peon() {
     }

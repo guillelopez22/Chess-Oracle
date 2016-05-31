@@ -13,11 +13,20 @@ public class Rey {
     private int pos_vert;
     private int pos_hor;
     private String nombre;
+    private String estado;
 
     public Rey(int pos_vert, int pos_hor, String nombre) {
         this.pos_vert = pos_vert;
         this.pos_hor = pos_hor;
         this.nombre = nombre;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
