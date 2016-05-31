@@ -1207,6 +1207,8 @@ public class Tablero extends javax.swing.JFrame {
             mostrarmenu(A1.getX(), A1.getY(), this.jPanel1);
             System.out.println(coordX);
         }else{
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 0;
             
         }
     }//GEN-LAST:event_A1MouseClicked
