@@ -7,5 +7,7 @@ public class Tree {
         root = new TreeNode();
         root.setData(rootData);
     }
+    
+    
 
 }
