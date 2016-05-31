@@ -1,7 +1,11 @@
 package chess.oracle;
 
 public class Tree {
-    TreeNode root;
-    
-    
+  private TreeNode root;
+
+    public Tree(Object rootData) {
+        root = new TreeNode();
+        root.setData(rootData);
+    }
+
 }
