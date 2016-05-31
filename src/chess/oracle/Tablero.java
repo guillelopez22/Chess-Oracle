@@ -127,9 +127,7 @@ public class Tablero extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        comboOpciones = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -990,18 +988,24 @@ public class Tablero extends javax.swing.JFrame {
         jButton2.setText("Limpiar Tablero");
 
         jButton4.setText("Analizar");
-
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Negras");
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Blacas");
+        comboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coronar Peon", "Comer Caballo", "Buscar Jaque" }));
+        comboOpciones.setSelectedIndex(-1);
+        comboOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOpcionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1010,14 +1014,10 @@ public class Tablero extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jRadioButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jRadioButton1))))
+                        .addComponent(comboOpciones, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1026,14 +1026,10 @@ public class Tablero extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
+                .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
                 .addComponent(jButton4)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
@@ -1046,14 +1042,14 @@ public class Tablero extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(jLabel18)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -1130,7 +1126,7 @@ public class Tablero extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1161,16 +1157,18 @@ public class Tablero extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton3))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1188,11 +1186,11 @@ public class Tablero extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -1219,6 +1217,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 1;
             mostrarmenu(A2.getX(), A2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 1;
         }
     }//GEN-LAST:event_A2MouseClicked
 
@@ -1228,6 +1229,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 2;
             mostrarmenu(A3.getX(), A3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 2;
         }
     }//GEN-LAST:event_A3MouseClicked
 
@@ -1237,6 +1241,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 3;
             mostrarmenu(A4.getX(), A4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 3;
         }
     }//GEN-LAST:event_A4MouseClicked
 
@@ -1246,6 +1253,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 4;
             mostrarmenu(A5.getX(), A5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 4;
         }
     }//GEN-LAST:event_A5MouseClicked
 
@@ -1255,6 +1265,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 5;
             mostrarmenu(A6.getX(), A6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 5;
         }
     }//GEN-LAST:event_A6MouseClicked
 
@@ -1264,6 +1277,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 6;
             mostrarmenu(A7.getX(), A7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 6;
         }
     }//GEN-LAST:event_A7MouseClicked
 
@@ -1273,6 +1289,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 7;
             mostrarmenu(A8.getX(), A8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('A');
+            this.coordY = 7;
         }
     }//GEN-LAST:event_A8MouseClicked
 
@@ -1282,6 +1301,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 0;
             mostrarmenu(B1.getX(), B1.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 0;
         }
     }//GEN-LAST:event_B1MouseClicked
 
@@ -1291,6 +1313,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 1;
             mostrarmenu(B2.getX(), B2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 1;
         }
     }//GEN-LAST:event_B2MouseClicked
 
@@ -1300,6 +1325,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 2;
             mostrarmenu(B3.getX(), B3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 2;
         }
     }//GEN-LAST:event_B3MouseClicked
 
@@ -1309,6 +1337,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 3;
             mostrarmenu(B4.getX(), B4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 3;
         }
     }//GEN-LAST:event_B4MouseClicked
 
@@ -1318,6 +1349,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 4;
             mostrarmenu(B5.getX(), B5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 4;
         }
     }//GEN-LAST:event_B5MouseClicked
 
@@ -1327,6 +1361,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 5;
             mostrarmenu(B6.getX(), B6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 5;
         }
     }//GEN-LAST:event_B6MouseClicked
 
@@ -1336,6 +1373,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 6;
             mostrarmenu(B7.getX(), B7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 6;
         }
     }//GEN-LAST:event_B7MouseClicked
 
@@ -1345,6 +1385,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('B');
             this.coordY = 7;
             mostrarmenu(B8.getX(), B8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('B');
+            this.coordY = 7;
         }
     }//GEN-LAST:event_B8MouseClicked
 
@@ -1461,6 +1504,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('D');
             this.coordY = 3;
             mostrarmenu(D4.getX(), D4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 3;
         }
 
 
@@ -1472,6 +1518,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('D');
             this.coordY = 4;
             mostrarmenu(D5.getX(), D5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 4;
         }
 
     }//GEN-LAST:event_D5MouseClicked
@@ -1482,6 +1531,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('D');
             this.coordY = 5;
             mostrarmenu(D6.getX(), D6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 5;
         }
 
     }//GEN-LAST:event_D6MouseClicked
@@ -1492,6 +1544,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('D');
             this.coordY = 6;
             mostrarmenu(D7.getX(), D7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 6;
         }
 
     }//GEN-LAST:event_D7MouseClicked
@@ -1502,6 +1557,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('D');
             this.coordY = 7;
             mostrarmenu(D8.getX(), D8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('D');
+            this.coordY = 7;
         }
 
     }//GEN-LAST:event_D8MouseClicked
@@ -1512,6 +1570,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 0;
             mostrarmenu(E1.getX(), E1.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 0;
         }
 
     }//GEN-LAST:event_E1MouseClicked
@@ -1522,6 +1583,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 1;
             mostrarmenu(E2.getX(), E2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 1;
         }
 
     }//GEN-LAST:event_E2MouseClicked
@@ -1532,6 +1596,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 2;
             mostrarmenu(E3.getX(), E3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 2;
         }
 
     }//GEN-LAST:event_E3MouseClicked
@@ -1542,6 +1609,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 3;
             mostrarmenu(E4.getX(), E4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 3;
         }
 
     }//GEN-LAST:event_E4MouseClicked
@@ -1552,6 +1622,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 4;
             mostrarmenu(E5.getX(), E5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 4;
         }
 
     }//GEN-LAST:event_E5MouseClicked
@@ -1562,6 +1635,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 5;
             mostrarmenu(E6.getX(), E6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 5;
         }
 
     }//GEN-LAST:event_E6MouseClicked
@@ -1572,6 +1648,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 6;
             mostrarmenu(E7.getX(), E7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 6;
         }
 
     }//GEN-LAST:event_E7MouseClicked
@@ -1582,6 +1661,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('E');
             this.coordY = 7;
             mostrarmenu(E8.getX(), E8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('E');
+            this.coordY = 7;
         }
 
     }//GEN-LAST:event_E8MouseClicked
@@ -1592,6 +1674,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 0;
             mostrarmenu(F1.getX(), F1.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 0;
         }
 
     }//GEN-LAST:event_F1MouseClicked
@@ -1602,6 +1687,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 1;
             mostrarmenu(F2.getX(), F2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 1;
         }
 
     }//GEN-LAST:event_F2MouseClicked
@@ -1612,6 +1700,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 2;
             mostrarmenu(F3.getX(), F3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 2;
         }
 
     }//GEN-LAST:event_F3MouseClicked
@@ -1622,6 +1713,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 3;
             mostrarmenu(F4.getX(), F4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 3;
         }
 
     }//GEN-LAST:event_F4MouseClicked
@@ -1632,6 +1726,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 4;
             mostrarmenu(F5.getX(), F5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 4;
         }
 
     }//GEN-LAST:event_F5MouseClicked
@@ -1642,6 +1739,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 5;
             mostrarmenu(F6.getX(), F6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 5;
         }
 
     }//GEN-LAST:event_F6MouseClicked
@@ -1652,6 +1752,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 6;
             mostrarmenu(F7.getX(), F7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 6;
         }
 
     }//GEN-LAST:event_F7MouseClicked
@@ -1662,6 +1765,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('F');
             this.coordY = 7;
             mostrarmenu(F8.getX(), F8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('F');
+            this.coordY = 7;
         }
 
     }//GEN-LAST:event_F8MouseClicked
@@ -1672,6 +1778,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 0;
             mostrarmenu(G1.getX(), G1.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 0;
         }
     }//GEN-LAST:event_G1MouseClicked
 
@@ -1681,6 +1790,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 1;
             mostrarmenu(G2.getX(), G2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 1;
         }
     }//GEN-LAST:event_G2MouseClicked
 
@@ -1690,6 +1802,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 2;
             mostrarmenu(G3.getX(), G3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 2;
         }
     }//GEN-LAST:event_G3MouseClicked
 
@@ -1699,6 +1814,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 3;
             mostrarmenu(G4.getX(), G4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 3;
         }
     }//GEN-LAST:event_G4MouseClicked
 
@@ -1708,6 +1826,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 4;
             mostrarmenu(G5.getX(), G5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 4;
         }
     }//GEN-LAST:event_G5MouseClicked
 
@@ -1717,6 +1838,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 5;
             mostrarmenu(G6.getX(), G6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 5;
         }
     }//GEN-LAST:event_G6MouseClicked
 
@@ -1726,6 +1850,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 6;
             mostrarmenu(G7.getX(), G7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 6;
         }
     }//GEN-LAST:event_G7MouseClicked
 
@@ -1735,6 +1862,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('G');
             this.coordY = 7;
             mostrarmenu(G8.getX(), G8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('G');
+            this.coordY = 7;
         }
     }//GEN-LAST:event_G8MouseClicked
 
@@ -1744,6 +1874,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 0;
             mostrarmenu(H1.getX(), H1.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 0;
         }
     }//GEN-LAST:event_H1MouseClicked
 
@@ -1753,6 +1886,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 1;
             mostrarmenu(H2.getX(), H2.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 1;
         }
     }//GEN-LAST:event_H2MouseClicked
 
@@ -1762,6 +1898,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 2;
             mostrarmenu(H3.getX(), H3.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 2;
         }
     }//GEN-LAST:event_H3MouseClicked
 
@@ -1771,6 +1910,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 3;
             mostrarmenu(H4.getX(), H4.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 3;
         }
     }//GEN-LAST:event_H4MouseClicked
 
@@ -1780,6 +1922,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 4;
             mostrarmenu(H5.getX(), H5.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 4;
         }
     }//GEN-LAST:event_H5MouseClicked
 
@@ -1789,6 +1934,10 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 5;
             mostrarmenu(H6.getX(), H6.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 5;
+            System.out.println("");
         }
     }//GEN-LAST:event_H6MouseClicked
 
@@ -1798,6 +1947,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 6;
             mostrarmenu(H7.getX(), H7.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 6;
         }
     }//GEN-LAST:event_H7MouseClicked
 
@@ -1807,6 +1959,9 @@ public class Tablero extends javax.swing.JFrame {
             this.coordX = this.getnumericcoordenade('H');
             this.coordY = 7;
             mostrarmenu(H8.getX(), H8.getY(), this.jPanel1);
+        } else {
+            this.coordX = this.getnumericcoordenade('H');
+            this.coordY = 7;
         }
     }//GEN-LAST:event_H8MouseClicked
 
@@ -1936,9 +2091,19 @@ public class Tablero extends javax.swing.JFrame {
         Piezas.Print_Lista();
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOpcionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboOpcionesActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        if (this.coordX != -1) {
+            
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
     private void mostrarmenu(int x, int y, javax.swing.JPanel coming) {
         this.PopMenuLugar.show(coming, x, y);
 
@@ -2082,11 +2247,11 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JButton H8;
     private javax.swing.JPopupMenu PopMenuLugar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> comboOpciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2110,8 +2275,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
     public Pieza check(javax.swing.JButton button, int cordX, int cordY){
         Pieza pieza = null;
