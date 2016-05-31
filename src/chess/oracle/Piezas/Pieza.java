@@ -14,8 +14,17 @@ public class Pieza {
     private int pos_hor;
     private String nombre;
     private String estado;
+    private int jugador;
 
     public Pieza() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Pieza(int pos_vert, int pos_hor, String nombre) {
@@ -23,6 +32,15 @@ public class Pieza {
         this.pos_hor = pos_hor;
         this.nombre = nombre;
     }
+
+    public int getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(int jugador) {
+        this.jugador = jugador;
+    }
+    
 
     public int getPos_vert() {
         return pos_vert;
@@ -47,7 +65,7 @@ public class Pieza {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public void movement(int type){
+    public void movement(int type, int jugador){
         
     }
     @Override

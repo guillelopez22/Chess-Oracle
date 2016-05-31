@@ -11,27 +11,38 @@ public class Peon extends Pieza {
         super(pos_vert, pos_hor, nombre);
     }
 
-  
-     
-    public void movement(int type) {
-        if (type == 1) {
-            pos_ver = pos_ver + 2;
-        } else if (type == 2) {
-            pos_ver = pos_ver + 1;
-        } else if (type == 3) {
-            pos_hor = pos_hor + 1;
-            pos_ver = pos_ver + 1;
-        } else if (type == 4) {
-            pos_hor = pos_hor - 1;
-            pos_ver = pos_ver + 1;
+    public void movement(int type, int jugador) {
+        if (jugador == 1) {
+            if (type == 1) {
+                pos_ver = pos_ver + 2;
+            } else if (type == 2) {
+                pos_ver = pos_ver + 1;
+            } else if (type == 3) {
+                pos_hor = pos_hor + 1;
+                pos_ver = pos_ver + 1;
+            } else if (type == 4) {
+                pos_hor = pos_hor - 1;
+                pos_ver = pos_ver + 1;
+            }
+        }else if (jugador == 2) {
+            if (type == 1) {
+                pos_ver = pos_ver - 2;
+            } else if (type == 2) {
+                pos_ver = pos_ver - 1;
+            } else if (type == 3) {
+                pos_hor = pos_hor + 1;
+                pos_ver = pos_ver - 1;
+            } else if (type == 4) {
+                pos_hor = pos_hor - 1;
+                pos_ver = pos_ver - 1;
+            }
         }
+
     }
 
     @Override
     public String toString() {
         return nombre;
     }
-
-    
 
 }

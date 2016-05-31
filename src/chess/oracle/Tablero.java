@@ -1206,10 +1206,10 @@ public class Tablero extends javax.swing.JFrame {
             this.coordY = 0;
             mostrarmenu(A1.getX(), A1.getY(), this.jPanel1);
             System.out.println(coordX);
-        }else{
+        } else {
             this.coordX = this.getnumericcoordenade('A');
             this.coordY = 0;
-            
+
         }
     }//GEN-LAST:event_A1MouseClicked
 
@@ -2050,7 +2050,7 @@ public class Tablero extends javax.swing.JFrame {
                 matriz[coordX][coordY] = "RN";
 
                 Rey reyNegro = new Rey(coordX, coordY, "RN");
-                
+
                 this.Piezas.insert(reyNegro, this.contalista);
                 contalista++;
                 this.contadorreynegro++;
@@ -2099,12 +2099,21 @@ public class Tablero extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         if (this.coordX != -1) {
-            
+
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        int op = comboOpciones.getSelectedIndex();
+        if (op == 1) {
+            TreeNode root = new TreeNode(matriz);
+            Tree tree = new Tree(root);
+        } else if (op == 2) {
+
+        } else {
+
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
     private void mostrarmenu(int x, int y, javax.swing.JPanel coming) {
         this.PopMenuLugar.show(coming, x, y);
@@ -2278,19 +2287,218 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
-    public Pieza check(javax.swing.JButton button, int cordX, int cordY){
+    public Pieza check(javax.swing.JButton button, int cordX, int cordY) {
         Pieza pieza = null;
         if (button.getIcon() == null) {
             JOptionPane.showMessageDialog(this, "No hay pieza");
-        }else{
+        } else {
             for (int i = 0; i < contalista; i++) {
-                if (((Pieza)Piezas.get(i)).getPos_hor() == cordX && ((Pieza)Piezas.get(i)).getPos_vert() == cordY) {
-                    pieza = ((Pieza)Piezas.get(i));
+                if (((Pieza) Piezas.get(i)).getPos_hor() == cordX && ((Pieza) Piezas.get(i)).getPos_vert() == cordY) {
+                    pieza = ((Pieza) Piezas.get(i));
                 }
             }
         }
         return pieza;
     }
+
+    public boolean legal(Pieza pieza, int newRow, int newColumn, String[][] playerMatrix, int currentPlayer) {
+        boolean legal = true;
+        if (pieza instanceof Peon) {
+            if ((currentPlayer == 1 && newRow >= ((Peon) pieza).getPos_hor() || (currentPlayer == 2 && newRow <= ((Peon) pieza).getPos_hor()))) { //Si se mueven en direccion incorrcta            
+                legal = false;
+            } else if (newColumn != ((Peon) pieza).getPos_vert()) {
+                if ((newColumn > ((Peon) pieza).getPos_vert() && newColumn == (((Peon) pieza).getPos_vert() + 1)) || (newColumn < ((Peon) pieza).getPos_vert() && newColumn == (((Peon) pieza).getPos_vert() - 1))) {
+                    if ((newRow == (((Peon) pieza).getPos_hor() + 1) && currentPlayer == 2) || (newRow == (((Peon) pieza).getPos_hor() - 1) && currentPlayer == 1)) {
+                        if (playerMatrix[newRow][newColumn] == "") {
+                            legal = false;
+                        }
+                    } else {
+                        legal = false;
+                    }
+                } else {
+                    legal = false;
+                }
+            } else if ((currentPlayer == 1 && newRow < (((Peon) pieza).getPos_hor() - 1)) || (currentPlayer == 2 && newRow > (((Peon) pieza).getPos_hor() + 1))) { //If moved two or more places
+
+                if ((currentPlayer == 1 && newRow == (((Peon) pieza).getPos_hor() - 2)) || (currentPlayer == 2 && newRow == (((Peon) pieza).getPos_hor() + 2))) { //If moved two places
+
+                } else {
+
+                    legal = false;
+
+                }
+
+            }
+        }
+
+        return legal;
+    }
+
+    public void moverPeon(Pieza pieza, String[][] matriz, TreeNode node, int jugador) {
+        String[][] moved = matriz;
+        if (jugador == 1 && ((Peon) pieza).getPos_hor() == 0 || jugador == 2 && ((Peon) pieza).getPos_hor() == 7) {
+            ((Peon) pieza).setEstado("Coronado");
+        }
+        if (jugador == 1 && moved[((Peon) pieza).getPos_hor() + 1][((Peon) pieza).getPos_vert() + 1].contains("N")) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(3, 1);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        } else if ((jugador == 1 && moved[((Peon) pieza).getPos_hor() - 1][((Peon) pieza).getPos_vert() + 1].contains("N"))) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(4, 1);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Peon) pieza).getPos_hor() + 1][((Peon) pieza).getPos_vert() - 1].contains("B")) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(3, 2);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        } else if ((jugador == 2 && moved[((Peon) pieza).getPos_hor() - 1][((Peon) pieza).getPos_vert() - 1].contains("B"))) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(4, 2);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Peon) pieza).getPos_hor() + 1][((Peon) pieza).getPos_vert() + 1].contains("B")) {
+
+        } else if ((jugador == 1 && moved[((Peon) pieza).getPos_hor() - 1][((Peon) pieza).getPos_vert() + 1].contains("B"))) {
+
+        } else if (jugador == 2 && moved[((Peon) pieza).getPos_hor() + 1][((Peon) pieza).getPos_vert() - 1].contains("N")) {
+
+        } else if ((jugador == 2 && moved[((Peon) pieza).getPos_hor() - 1][((Peon) pieza).getPos_vert() - 1].contains("N"))) {
+
+        } else if (jugador == 1 && moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert() + 1].equals("")) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(2, 1);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert() + 1].equals("")) {
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = "";
+            ((Peon) pieza).movement(2, 2);
+            moved[((Peon) pieza).getPos_hor()][((Peon) pieza).getPos_vert()] = ((Peon) pieza).getNombre();
+            node.addChild(moved);
+        }
+    }
+
+    public void moverRey(Pieza pieza, String[][] matriz, TreeNode node, int jugador) {
+
+    }
+
+    public void moverCaballo(Pieza pieza, String[][] matriz, TreeNode node, int jugador) {
+        String[][] moved = matriz;
+        if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() + 2].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(1, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() + 2].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(2, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() - 2].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(3, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() - 2].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(4, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() + 1].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(5, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() + 1].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(6, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() - 1].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(7, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() - 1].contains("N")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(8, 1);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() + 2].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(1, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() + 2].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(2, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() - 2].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(3, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() - 2].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(4, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() + 1].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(5, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() + 1].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(6, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() - 1].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(7, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() - 1].contains("B")) {
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = "";
+            ((Caballo) pieza).movement(8, 2);
+            moved[((Caballo) pieza).getPos_hor()][((Caballo) pieza).getPos_vert()] = ((Caballo) pieza).getNombre();
+            node.addChild(moved);
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() + 2].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() + 2].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() - 2].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() - 2].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() + 1].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() + 1].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() - 1].contains("B")) {
+
+        } else if (jugador == 1 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() - 1].contains("B")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() + 2].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 1][((Caballo) pieza).getPos_vert() - 2].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 1][((Caballo) pieza).getPos_vert() - 2].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() + 1].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() + 1].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() + 2][((Caballo) pieza).getPos_vert() - 1].contains("N")) {
+
+        } else if (jugador == 2 && moved[((Caballo) pieza).getPos_hor() - 2][((Caballo) pieza).getPos_vert() - 1].contains("N")) {
+
+        }
+    }
+
     private javax.swing.JButton actual = new javax.swing.JButton();
     String matriz[][] = new String[8][8];
     Lista Piezas = new Lista();

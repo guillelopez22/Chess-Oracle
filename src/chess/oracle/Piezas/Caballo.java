@@ -26,7 +26,7 @@ public class Caballo extends Pieza {
     }
 
     
-    public void movemet(int type) {
+    public void movemet(int type, int jugador) {
         if (type == 1) {
             pos_vert = pos_vert + 2;//l
             pos_hor = pos_hor + 1;// --
