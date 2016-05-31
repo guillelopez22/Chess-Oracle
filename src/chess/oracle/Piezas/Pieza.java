@@ -18,6 +18,9 @@ public class Pieza {
 
     public Pieza() {
     }
+    public Pieza(Pieza pieza){
+        
+    }
 
     public String getNombre() {
         return nombre;

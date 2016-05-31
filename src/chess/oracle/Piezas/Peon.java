@@ -11,6 +11,13 @@ public class Peon extends Pieza {
         super(pos_vert, pos_hor, nombre);
     }
 
+    public Peon(Pieza pieza) {
+        super(pieza);
+    }
+
+
+    
+
     public void movement(int type, int jugador) {
         if (jugador == 1) {
             if (type == 1) {

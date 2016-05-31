@@ -20,6 +20,10 @@ public class Caballo extends Pieza {
         super(pos_vert, pos_hor, nombre);
     }
 
+    public Caballo(Pieza pieza) {
+        super(pieza);
+    }
+    
     
 
     public Caballo() {

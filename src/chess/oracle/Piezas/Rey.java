@@ -20,6 +20,10 @@ public class Rey extends Pieza {
         super(pos_vert, pos_hor, nombre);
     }
 
+    public Rey(Pieza pieza) {
+        super(pieza);
+    }
+    
     public Rey() {
     }
 
