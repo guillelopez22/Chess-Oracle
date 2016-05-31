@@ -9,51 +9,41 @@ package chess.oracle.Piezas;
  *
  * @author Memo
  */
-public class Rey {
+public class Rey extends Pieza {
+
     private int pos_vert;
     private int pos_hor;
     private String nombre;
     private String estado;
 
     public Rey(int pos_vert, int pos_hor, String nombre) {
-        this.pos_vert = pos_vert;
-        this.pos_hor = pos_hor;
-        this.nombre = nombre;
+        super(pos_vert, pos_hor, nombre);
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    
-    
     public Rey() {
     }
-    
-    public void movement(int type){
+
+    public void movement(int type) {
         if (type == 1) {
-            pos_vert = pos_vert+1;
-        }else if (type == 2) {
-            pos_vert = pos_vert-1;
-        }else if (type == 3) {
-            pos_hor = pos_hor +1;
-        }else if (type == 4) {
-            pos_hor = pos_hor +1;
-        }else if (type == 5) {
-            pos_vert = pos_vert+1;
-            pos_hor = pos_hor +1;
-        }else if (type == 6) {
-            pos_vert = pos_vert+1;
-            pos_hor = pos_hor -1;
-        }else if (type == 7) {
-            pos_vert = pos_vert-1;
-            pos_hor = pos_hor -1;
-        }else if (type == 8) {
-            pos_vert = pos_vert-1;
-            pos_hor = pos_hor +1;
+            pos_vert = pos_vert + 1;
+        } else if (type == 2) {
+            pos_vert = pos_vert - 1;
+        } else if (type == 3) {
+            pos_hor = pos_hor + 1;
+        } else if (type == 4) {
+            pos_hor = pos_hor + 1;
+        } else if (type == 5) {
+            pos_vert = pos_vert + 1;
+            pos_hor = pos_hor + 1;
+        } else if (type == 6) {
+            pos_vert = pos_vert + 1;
+            pos_hor = pos_hor - 1;
+        } else if (type == 7) {
+            pos_vert = pos_vert - 1;
+            pos_hor = pos_hor - 1;
+        } else if (type == 8) {
+            pos_vert = pos_vert - 1;
+            pos_hor = pos_hor + 1;
         }
     }
 
@@ -61,7 +51,5 @@ public class Rey {
     public String toString() {
         return nombre;
     }
-    
-    
-    
+
 }

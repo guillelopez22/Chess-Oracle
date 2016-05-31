@@ -9,57 +9,54 @@ package chess.oracle.Piezas;
  *
  * @author Memo
  */
-public class Caballo {
+public class Caballo extends Pieza {
+
     private int pos_vert;
     private int pos_hor;
     private String nombre;
     private String estado;
 
     public Caballo(int pos_vert, int pos_hor, String nombre) {
-        this.pos_vert = pos_vert;
-        this.pos_hor = pos_hor;
-        this.nombre = nombre;
+        super(pos_vert, pos_hor, nombre);
     }
+
     
+
     public Caballo() {
     }
 
-    public String getEstado() {
-        return estado;
+    
+    public void movemet(int type) {
+        if (type == 1) {
+            pos_vert = pos_vert + 2;//l
+            pos_hor = pos_hor + 1;// --
+        } else if (type == 2) {
+            pos_vert = pos_vert + 2;//---
+            pos_hor = pos_hor - 1;//     :
+        } else if (type == 3) {
+            pos_vert = pos_vert - 2;
+            pos_hor = pos_hor + 1;
+        } else if (type == 4) {
+            pos_vert = pos_vert - 2;
+            pos_hor = pos_hor - 1;
+        } else if (type == 5) {
+            pos_vert = pos_vert + 1;
+            pos_hor = pos_hor + 2;
+        } else if (type == 6) {
+            pos_vert = pos_vert + 1;
+            pos_hor = pos_hor - 2;
+        } else if (type == 7) {
+            pos_vert = pos_vert - 1;
+            pos_hor = pos_hor + 2;
+        } else if (type == 8) {
+            pos_vert = pos_vert - 1;
+            pos_hor = pos_hor - 2;
+        }
+        
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    
-    public void movemet(int type){
-        if (type == 1) {
-            pos_vert =  pos_vert+2;//l
-            pos_hor = pos_hor +1;// --
-        }else if (type == 2) {
-            pos_vert =  pos_vert+2;//---
-            pos_hor = pos_hor -1;//     :
-        }else if (type == 3) {
-            pos_vert =  pos_vert-2;
-            pos_hor = pos_hor +1;
-        }else if (type == 4) {
-            pos_vert =  pos_vert-2;
-            pos_hor = pos_hor -1;
-        }else if (type == 5) {
-            pos_vert =  pos_vert+1;
-            pos_hor = pos_hor +2;
-        }else if (type == 6) {
-            pos_vert =  pos_vert+1;
-            pos_hor = pos_hor -2;
-        }else if (type == 7) {
-            pos_vert =  pos_vert-1;
-            pos_hor = pos_hor +2;
-        }else if (type == 8) {
-            pos_vert =  pos_vert-1;
-            pos_hor = pos_hor -2;
-        }
-{
-            
-        }
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

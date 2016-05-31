@@ -5,7 +5,10 @@
  */
 package chess.oracle;
 
+import chess.oracle.Piezas.Caballo;
 import chess.oracle.Piezas.Peon;
+import chess.oracle.Piezas.Pieza;
+import chess.oracle.Piezas.Rey;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -1205,6 +1208,8 @@ public class Tablero extends javax.swing.JFrame {
             this.coordY = 0;
             mostrarmenu(A1.getX(), A1.getY(), this.jPanel1);
             System.out.println(coordX);
+        }else{
+            
         }
     }//GEN-LAST:event_A1MouseClicked
 
@@ -1835,7 +1840,7 @@ public class Tablero extends javax.swing.JFrame {
                 Image img = ImageIO.read(getClass().getResource("rey Blanco.png"));
                 actual.setIcon(new ImageIcon(img));
                 matriz[coordX][coordY] = "RB";
-                Peon reyBlanco = new Peon(coordX, coordY, "RB");
+                Rey reyBlanco = new Rey(coordX, coordY, "RB");
                 this.Piezas.insert(reyBlanco, this.contalista);
                 contalista++;
                 this.contadorreyblanco++;
@@ -1852,7 +1857,7 @@ public class Tablero extends javax.swing.JFrame {
                 Image img = ImageIO.read(getClass().getResource("caballo blanco.png"));
                 actual.setIcon(new ImageIcon(img));
                 matriz[coordX][coordY] = "CB";
-                Peon caballoBlanco = new Peon(coordX, coordY, "CB");
+                Caballo caballoBlanco = new Caballo(coordX, coordY, "CB");
                 this.Piezas.insert(caballoBlanco, this.contalista);
                 contalista++;
                 this.contadorcaballoblanco++;
@@ -1887,7 +1892,8 @@ public class Tablero extends javax.swing.JFrame {
                 actual.setIcon(new ImageIcon(img));
                 matriz[coordX][coordY] = "RN";
 
-                Peon reyNegro = new Peon(coordX, coordY, "RN");
+                Rey reyNegro = new Rey(coordX, coordY, "RN");
+                
                 this.Piezas.insert(reyNegro, this.contalista);
                 contalista++;
                 this.contadorreynegro++;
@@ -1904,7 +1910,7 @@ public class Tablero extends javax.swing.JFrame {
                 Image img = ImageIO.read(getClass().getResource("caballonegro.png"));
                 actual.setIcon(new ImageIcon(img));
                 matriz[coordX][coordY] = "CN";
-                Peon caballoNegro = new Peon(coordX, coordY, "CN");
+                Caballo caballoNegro = new Caballo(coordX, coordY, "CN");
                 this.Piezas.insert(caballoNegro, this.contalista);
                 contalista++;
                 this.contadorcaballonegro++;
@@ -2107,6 +2113,19 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
+    public Pieza check(javax.swing.JButton button, int cordX, int cordY){
+        Pieza pieza = null;
+        if (button.getIcon() == null) {
+            JOptionPane.showMessageDialog(this, "No hay pieza");
+        }else{
+            for (int i = 0; i < contalista; i++) {
+                if (((Pieza)Piezas.get(i)).getPos_hor() == cordX && ((Pieza)Piezas.get(i)).getPos_vert() == cordY) {
+                    pieza = ((Pieza)Piezas.get(i));
+                }
+            }
+        }
+        return pieza;
+    }
     private javax.swing.JButton actual = new javax.swing.JButton();
     String matriz[][] = new String[8][8];
     Lista Piezas = new Lista();
