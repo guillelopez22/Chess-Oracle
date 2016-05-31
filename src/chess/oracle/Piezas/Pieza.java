@@ -21,20 +21,16 @@ public class Pieza {
     public Pieza(Pieza pieza){
         
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Pieza(int pos_vert, int pos_hor, String nombre) {
         this.pos_vert = pos_vert;
         this.pos_hor = pos_hor;
         this.nombre = nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
 
     public int getJugador() {
         return jugador;

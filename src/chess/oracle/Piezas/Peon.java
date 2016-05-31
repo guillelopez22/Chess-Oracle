@@ -7,9 +7,13 @@ public class Peon extends Pieza {
     private String nombre;
     private String estado;
 
-    public Peon(int pos_vert, int pos_hor, String nombre) {
-        super(pos_vert, pos_hor, nombre);
+    public Peon(int pos_ver, int pos_hor, String nombre) {
+        this.pos_ver = pos_ver;
+        this.pos_hor = pos_hor;
+        this.nombre = nombre;
     }
+
+    
 
     public Peon(Pieza pieza) {
         super(pieza);

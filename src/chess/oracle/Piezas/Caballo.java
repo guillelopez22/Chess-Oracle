@@ -17,9 +17,16 @@ public class Caballo extends Pieza {
     private String estado;
 
     public Caballo(int pos_vert, int pos_hor, String nombre) {
-        super(pos_vert, pos_hor, nombre);
+        this.pos_vert = pos_vert;
+        this.pos_hor = pos_hor;
+        this.nombre = nombre;
     }
 
+
+    
+
+
+    
     public Caballo(Pieza pieza) {
         super(pieza);
     }
