@@ -1,4 +1,4 @@
-package chess.oracle;
+package chess.oracle.Piezas;
 
 public class Peon {
 

@@ -5,6 +5,7 @@
  */
 package chess.oracle;
 
+import chess.oracle.Piezas.Peon;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
