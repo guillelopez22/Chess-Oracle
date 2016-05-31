@@ -4,6 +4,13 @@ public class Peon {
 
     private int pos_ver;
     private int pos_hor;
+    private String nombre;
+
+    public Peon(int pos_ver, int pos_hor, String nombre) {
+        this.pos_ver = pos_ver;
+        this.pos_hor = pos_hor;
+        this.nombre = nombre;
+    }
 
     public Peon() {
     }
@@ -21,4 +28,10 @@ public class Peon {
             pos_ver = pos_ver + 1;
         }
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 }
