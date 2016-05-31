@@ -65,7 +65,7 @@ public class Lista {
         int cont = 0;
         while (temp != null) {
             if (cont == 0) {
-                System.out.print("[H]");
+                //System.out.print("[H]");
             }
             if (temp.getNext() != null) {
                 System.out.print("[" + temp.getValue() + "] - ");
