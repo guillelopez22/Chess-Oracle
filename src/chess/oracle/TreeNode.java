@@ -1,6 +1,7 @@
 package chess.oracle;
 
 public class TreeNode {
+
     private Lista children = new Lista();
     private TreeNode padre = null;
     private Object data = null;
@@ -8,6 +9,9 @@ public class TreeNode {
 
     public TreeNode(Object data) {
         this.data = data;
+    }
+
+    public TreeNode() {
     }
 
     public TreeNode(Object data, TreeNode padre) {
@@ -49,10 +53,11 @@ public class TreeNode {
     }
 
     public boolean isLeaf() {
-        if(cont_children == 0) 
+        if (cont_children == 0) {
             return true;
-        else 
+        } else {
             return false;
+        }
     }
 
     public void removeParent() {
