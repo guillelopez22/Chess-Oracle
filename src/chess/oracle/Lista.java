@@ -9,8 +9,8 @@ public class Lista {
         head = new Nodo();
     }
 
-    public void insert(TreeNode treenode, int pos) {
-        Nodo newNodo = new Nodo(treenode);
+    public void insert(Object object, int pos) {
+        Nodo newNodo = new Nodo(object);
         Nodo newHead = head;
         int cont = 0;
         if (pos == 0) {
@@ -37,9 +37,9 @@ public class Lista {
         return 0;
     }
 
-    public TreeNode get(int pos) {
+    public Object get(int pos) {
         Nodo temp = head;
-        TreeNode valor = temp.getValue();
+        Object valor = temp.getValue();
         for (int i = 0; i < pos; i++) {
             temp = temp.getNext();
             valor = temp.getValue();
